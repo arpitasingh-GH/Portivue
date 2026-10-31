@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# ProofOfWork
+# Portivue
 
 A responsive student portfolio app built with React, Vite, and Supabase.
 
@@ -16,7 +15,7 @@ A responsive student portfolio app built with React, Vite, and Supabase.
 ## Setup
 1. Create a `.env.local` file in the project root (copy `.env.example`).
 2. Set:
-   - `VITE_SUPABASE_URL=https://btpgvxfgivzrbsyegljo.supabase.co`
+   - `VITE_SUPABASE_URL=https://abpdrcslcsbatszipnyz.supabase.co`
    - `VITE_SUPABASE_ANON_KEY=your Supabase publishable key`
 3. In Supabase Dashboard, open **SQL Editor**, paste `db/schema.sql`, and run it.
 4. In Supabase **Authentication → URL Configuration**, add your local and deployed site URLs to Site URL / Redirect URLs, e.g. `http://localhost:5173/**` and your production origin.
@@ -44,7 +43,3 @@ A responsive student portfolio app built with React, Vite, and Supabase.
 - Configure your Supabase Auth email templates and production redirect URLs.
 - Consider rate limiting / CAPTCHA for public sign-up, a privacy/terms page, and server-side URL reputation checks if needed.
 - Evidence URLs are user-submitted and are not fetched or verified by this application.
-=======
-# Portivue
-Ai powered student portfolio platform
->>>>>>> 8c0fb80a377b6f63044c16197fc764b1f5152a35

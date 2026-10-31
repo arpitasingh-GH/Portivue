@@ -1,4 +1,4 @@
--- ProofOfWork database schema
+-- Portivue database schema
 -- Run this file in Supabase Dashboard > SQL Editor.
 -- Safe to re-run. Uses the Supabase Auth user ID as the profile owner.
 -- IMPORTANT: Never put a service_role key in frontend environment variables.
@@ -26,6 +26,7 @@ create table if not exists public.portfolio_entries (
   entry_type text not null default 'project'
     check (entry_type in ('project', 'certificate', 'hackathon')),
   evidence_url text,
+  is_public boolean not null default true,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
   constraint evidence_url_valid check (
@@ -33,8 +34,16 @@ create table if not exists public.portfolio_entries (
   )
 );
 
+alter table public.portfolio_entries add column if not exists is_public boolean not null default true;
+
+create index if not exists profiles_username_idx
+  on public.profiles(username);
+
 create index if not exists portfolio_entries_user_id_created_at_idx
   on public.portfolio_entries(user_id, created_at desc);
+
+create index if not exists portfolio_entries_is_public_idx
+  on public.portfolio_entries(user_id, is_public);
 
 create or replace function public.set_updated_at()
 returns trigger
@@ -122,7 +131,7 @@ create policy "Owners can update own profile"
 drop policy if exists "Public can read portfolio entries" on public.portfolio_entries;
 create policy "Public can read portfolio entries"
   on public.portfolio_entries for select
-  using (true);
+  using (is_public = true or auth.uid() = user_id);
 
 drop policy if exists "Owners can insert own entries" on public.portfolio_entries;
 create policy "Owners can insert own entries"
