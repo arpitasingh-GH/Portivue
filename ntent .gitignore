@@ -1,0 +1,57 @@
+[1mdiff --git a/README.md b/README.md[m
+[1mindex cf31a88..e85677f 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -1,2 +1,51 @@[m
+ # Portivue[m
+[31m-Ai powered student portfolio platform[m
+[32m+[m
+[32m+[m[32mPortivue is a student portfolio prototype built with React, TypeScript, and Vite. It supports local portfolio accounts and entries, a public-preview mode, and an optional Google Gemma 4 assistant.[m
+[32m+[m
+[32m+[m[32m## Use real Gemma 4 locally[m
+[32m+[m
+[32m+[m[32mPortivue does not bundle an AI model. The assistant sends prompts to a locally running Ollama server; Ollama runs the selected Gemma model on your computer.[m
+[32m+[m
+[32m+[m[32m1. Install [Ollama](https://ollama.com/download).[m
+[32m+[m[32m2. In PowerShell, download the small Gemma 4 E2B model:[m
+[32m+[m
+[32m+[m[32m   ```powershell[m
+[32m+[m[32m   ollama pull gemma4:e2b[m
+[32m+[m[32m   ```[m
+[32m+[m
+[32m+[m[32m   Ollama normally starts its local API automatically. If it is not running, start it with `ollama serve`.[m
+[32m+[m[32m3. Install project dependencies and start Portivue:[m
+[32m+[m
+[32m+[m[32m   ```powershell[m
+[32m+[m[32m   npm install[m
+[32m+[m[32m   npm run dev[m
+[32m+[m[32m   ```[m
+[32m+[m
+[32m+[m[32m4. Open the assistant's settings and set:[m
+[32m+[m[32m   - Model: `Gemma 4 E2B`[m
+[32m+[m[32m   - Ollama endpoint: `http://localhost:11434/v1`[m
+[32m+[m[32m5. Send a prompt. A successful response is labeled with the Gemma model; if Ollama is unavailable or the model is missing, Portivue displays the connection error instead of presenting a demo response as AI.[m
+[32m+[m
+[32m+[m[32mTo configure the endpoint through Vite instead, copy `.env.example` to `.env`, set `VITE_GEMMA_ENDPOINT_URL=http://localhost:11434/v1` and `VITE_GEMMA_MODEL=gemma4:e2b`, then restart the dev server. The assistant settings saved in your browser take precedence over environment defaults; if you previously used Portivue, set the endpoint in the settings panel.[m
+[32m+[m
+[32m+[m[32mOther Ollama Gemma 4 model tags available in the selector are `gemma4:e4b`, `gemma4:12b`, `gemma4:26b`, and `gemma4:31b`. Larger models require more hardware and disk space.[m
+[32m+[m
+[32m+[m[32m## Offline demo mode[m
+[32m+[m
+[32m+[m[32mWhen no endpoint is configured, chat responses come from fixed, rule-based examples. They are labeled **Offline demo · not AI** and do not use Gemma. AI-powered bio and entry polishing requires a working Ollama endpoint.[m
+[32m+[m
+[32m+[m[32m## Project notes[m
+[32m+[m
+[32m+[m[32m- Portfolio accounts and data are stored in the browser for this prototype. The SQL files under `supabase/migrations/` do not by themselves connect the running app to a production backend.[m
+[32m+[m[32m- A custom endpoint's optional API key is stored in browser local storage. Do not enter production credentials in this client-side prototype; use a server-side proxy for authenticated cloud services.[m
+[32m+[m[32m- Certificate links in the sample portfolio are course information, not proof that a credential was earned.[m
+[32m+[m
+[32m+[m[32m## Run and build[m
+[32m+[m
+[32m+[m[32m```powershell[m
+[32m+[m[32mnpm install[m
+[32m+[m[32mnpm run dev[m
+[32m+[m[32mnpm run build[m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32mThe development server prints its local URL (usually `http://localhost:5173`).[m
