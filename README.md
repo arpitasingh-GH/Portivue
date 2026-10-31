@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ProofOfWork
 
 A responsive student portfolio app built with React, Vite, and Supabase.
@@ -43,3 +44,7 @@ A responsive student portfolio app built with React, Vite, and Supabase.
 - Configure your Supabase Auth email templates and production redirect URLs.
 - Consider rate limiting / CAPTCHA for public sign-up, a privacy/terms page, and server-side URL reputation checks if needed.
 - Evidence URLs are user-submitted and are not fetched or verified by this application.
+=======
+# Portivue
+Ai powered student portfolio platform
+>>>>>>> 8c0fb80a377b6f63044c16197fc764b1f5152a35
